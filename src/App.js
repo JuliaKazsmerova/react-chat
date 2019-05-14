@@ -1,26 +1,28 @@
-import React from 'react';
+import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import { Connector } from 'mqtt-react';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import _MessageContainer from './MessageContainer.js';
+import {subscribe} from 'mqtt-react';
+
+const MessageContainer = subscribe({topic: 'upjs/ds/tutorial/react'})(_MessageContainer);
+
+
+class App extends Component {
+  render() {
+    return (
+      <Connector mqttProps="ws://broker.hivemq.com:8000/mqtt">
+      <div className="App">
+        <div className="App-header">
+          <img src={logo} className="App-logo" alt="logo" />
+          <h2>Tutorial</h2>
+        </div>
+        <MessageContainer/> 
+      </div>
+      </Connector>
+    );
+  }
 }
 
 export default App;

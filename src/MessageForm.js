@@ -1,4 +1,5 @@
 import React from 'react';
+
 export default class MessageForm extends React.Component {
   constructor(props) {
     super(props);
@@ -8,7 +9,7 @@ export default class MessageForm extends React.Component {
   handleSubmit(event) {
     const value = this.input.value;
     this.input.value = '';
-    if (value != '')
+    if (value !== '')
         this.props.onSubmit(value);
     event.preventDefault();
   }

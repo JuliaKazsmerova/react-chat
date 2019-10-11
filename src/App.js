@@ -1,10 +1,8 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
-import { Connector } from 'mqtt-react';
-
 import _MessageContainer from './MessageContainer.js';
-import {subscribe} from 'mqtt-react';
+import { Connector, subscribe } from 'mqtt-react';
 
 const MessageContainer = subscribe({topic: 'upjs/ds/tutorial/react'})(_MessageContainer);
 
@@ -18,7 +16,7 @@ class App extends Component {
           <img src={logo} className="App-logo" alt="logo" />
           <h2>Tutorial</h2>
         </div>
-        <MessageContainer/> 
+        <MessageContainer/>
       </div>
       </Connector>
     );
